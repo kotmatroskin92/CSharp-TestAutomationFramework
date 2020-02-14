@@ -9,12 +9,13 @@ using TestAutomation.pages;
 namespace TestAutomation.tests
 {
     [TestClass]
-    public class UnitTest1 : BaseTest
+    public class SearchCarTest : BaseTest
     {
         private const string Brand = "Lexus";
         private const string Model = "LX";
         private static List<CarData> _cars = new List<CarData>();
         private static List<CarData> _carsSortedByPrice = new List<CarData>();
+        private static List<CarData> _carsSortedByYear = new List<CarData>();
         private static List<CarData> _carsSortedByDate = new List<CarData>();
 
         [TestMethod]
@@ -45,12 +46,12 @@ namespace TestAutomation.tests
                 expectedSortingByPrice.SequenceEqual(_carsSortedByPrice));
 
             Log.Step(6, "Sort result by year");
-            var sortedByYear = resultPage.FilterByYear();
+            _carsSortedByYear = resultPage.FilterByYear();
 
             Log.Step(7, "Verify that result is sorted by year");
             var expectedSortingByYear = _cars.OrderByDescending(car => car.Year).ToList();
             softAssert.True("Cars are not sorted correctly by Year",
-                expectedSortingByYear.SequenceEqual(sortedByYear, new CarDataComparer()));
+                expectedSortingByYear.SequenceEqual(_carsSortedByYear, new CarDataComparer()));
 
             Log.Step(8, "Sort result by publish date");
             _carsSortedByDate = resultPage.FilterByDate();
@@ -58,10 +59,11 @@ namespace TestAutomation.tests
 
             Log.Step(9, "Verify that result is sorted by publish date");
             var expectedSortingByDate = _cars.OrderByDescending(x =>
-            {
-                DateTime.TryParse(x.Date, out var date);
-                return date;
-            }).ToList();
+                {
+                    DateTime.TryParse(x.Date, out var date);
+                    return date;
+                })
+                .ToList();
 
             softAssert.True("Cars are not sorted correctly by Date",
                 expectedSortingByDate.SequenceEqual(_carsSortedByDate, new CarDataComparer()));

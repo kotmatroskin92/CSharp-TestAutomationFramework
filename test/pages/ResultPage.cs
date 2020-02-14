@@ -77,7 +77,7 @@ namespace TestAutomation.pages
             return GetAllCars();
         }
 
-        public IEnumerable<CarData> FilterByYear()
+        public List<CarData> FilterByYear()
         {
             WaitForElementToBeClickable(BtnSortByYear).Click();
             return GetAllCars();
