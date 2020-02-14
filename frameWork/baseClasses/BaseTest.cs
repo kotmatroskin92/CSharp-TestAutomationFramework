@@ -14,7 +14,7 @@ namespace TestAutomation
         [TestInitialize]
         public void Setup()
         {
-            var driver = Browser.GetDriver();
+            var driver = Browser.GetInstance();
             FileUtils.CleanDirectory(FileUtils.GetOutputDirectory());
             Browser.OpenBaseUrl();
         }

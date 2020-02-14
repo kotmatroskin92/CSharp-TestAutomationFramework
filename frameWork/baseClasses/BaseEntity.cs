@@ -6,7 +6,7 @@ namespace Test.baseClasses
 {
     public class BaseEntity
     {
-        protected static readonly IWebDriver Driver = Browser.GetDriver();
+        protected static readonly IWebDriver Driver = Browser.GetInstance();
         protected static readonly Logg Log = Logg.GetInstance();
         
     }
