@@ -23,7 +23,8 @@ namespace TestAutomation.tests
             var softAssert = new SoftAssertions();
 
             Log.Step(1, "Go to cars sale page");
-            var carsSalePage = MainPage.GoToCarsSalePage();
+            var mainPage = new MainPage();
+            var carsSalePage = mainPage.GoToCarsSalePage();
 
             Log.Step(2, "Searching for cars");
             carsSalePage.FilterCars(Brand, Model);

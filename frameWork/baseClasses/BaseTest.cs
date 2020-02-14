@@ -1,11 +1,7 @@
-﻿using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Test.baseClasses;
 using Test.browser;
-using Test.logging;
 using Test.utils;
-using TestAutomation.pages;
 
 namespace TestAutomation
 {
@@ -14,7 +10,6 @@ namespace TestAutomation
     {
         public TestContext TestContext { get; set; }
 
-        protected MainPage MainPage;
         
         [TestInitialize]
         public void Setup()
@@ -22,7 +17,6 @@ namespace TestAutomation
             var driver = Browser.GetDriver();
             FileUtils.CleanDirectory(FileUtils.GetOutputDirectory());
             Browser.OpenBaseUrl();
-            MainPage = new MainPage();
         }
 
         [TestCleanup]
