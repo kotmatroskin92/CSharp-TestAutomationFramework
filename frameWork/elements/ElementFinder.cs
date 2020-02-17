@@ -23,7 +23,7 @@ namespace Test.elements
             catch (Exception)
             {
                 throw new Exception(
-                    $"WebDriverTimeoutException: Element {locator} was not found for {JsonReader.GetTimeoutInSeconds()} seconds");
+                    $"WebDriverTimeoutException: Element {locator} was not found for {TimeOutSeconds} seconds");
             }
         }
         
